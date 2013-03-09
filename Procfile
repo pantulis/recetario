@@ -1,2 +1,2 @@
-web: script/rails server -p $PORT
-console: script/rails console
+web: bin/rails server -p $PORT
+console: bin/rails console
