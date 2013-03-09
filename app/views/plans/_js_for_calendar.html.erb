@@ -1,0 +1,58 @@
+<script>
+$(document).ready(function(){
+	$('.form-horizontal').submit(function(){
+		 $.each($('#mycalendar').fullCalendar('clientEvents'),function(idx,item){
+			 $('<input>').attr({type:'hidden',name:'recipes[]',value:item.recipe_id}).appendTo($('.form-horizontal'))
+			 $('<input>').attr({type:'hidden',name:'dates[]',value:item.start}).appendTo($('.form-horizontal'))
+		 });
+	 }
+	);
+
+	$('#filter').keyup(function(){
+		val = this.value;
+
+		if (val.length == 0) 
+		{
+			$('.external-event').hide();
+		}
+		else
+		{
+			myregexp = new RegExp(val, "gi");
+			var $el = $('.external-event').each(function() { 
+				name = $(this).data("name");
+
+				if (name.match(myregexp) != null) {
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			});
+		}
+	});
+
+	$('#mycalendar').fullCalendar({
+	        header: {
+	                left: 'prev,next today',
+	                center: 'title',
+	                right: 'month,agendaWeek,agendaDay'
+	        },
+			events: <%= @resource.events_for_calendar %>,
+	        editable: true,
+	        droppable: true, 
+		
+	        drop: function(date, allDay) {
+	           var originalEventObject = $(this).data('eventObject');
+	           var copiedEventObject = $.extend({}, originalEventObject);
+	           copiedEventObject.start = date;
+	           copiedEventObject.allDay = allDay;
+			   copiedEventObject.recipe_id = $(this).data("id");
+	           $('#mycalendar').fullCalendar('renderEvent', copiedEventObject, true);
+	        },
+		
+			eventClick: function(calEvent, jsEvent, view) {
+				$('#mycalendar').fullCalendar('removeEvents', calEvent._id);
+			}
+		
+	});
+})
+</script>

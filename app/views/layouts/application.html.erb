@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recetario on Rails</title>
+
+	<%= stylesheet_link_tag "bootstrap-classic", media: "all", "data-turbolinks-track" => true %>
+
+	<%= stylesheet_link_tag "bootstrap-responsive", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "charisma-app", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "jquery-ui-1.8.21.custom", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "fullcalendar", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "fullcalendar.print", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "chosen", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "uniform.default", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "colorbox", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "jquery.cleditor", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "jquery.noty", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "noty_theme_default", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "elfinder.min", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "elfinder.theme", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "jquery.iphone.toggle", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "opa-icons", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "uploadify", media: "all", "data-turbolinks-track" => true %>
+
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "jquery-1.7.2.min.js", "data-turbolinks-track" => true %>
+	<!-- jQuery -->
+	<%= javascript_include_tag "jquery-1.7.2.min.js", "data-turbolinks-track" => true %>
+	<!-- jQuery UI -->
+	<%= javascript_include_tag "jquery-ui-1.8.21.custom.min.js", "data-turbolinks-track" => true %>
+	<!-- transition / effect library -->
+	<%= javascript_include_tag "bootstrap-transition.js", "data-turbolinks-track" => true %>
+	<!-- alert enhancer library -->
+	<%= javascript_include_tag "bootstrap-alert.js", "data-turbolinks-track" => true %>
+	<!-- modal / dialog library -->
+	<%= javascript_include_tag "bootstrap-modal.js", "data-turbolinks-track" => true %>
+	<!-- custom dropdown library -->
+	<%= javascript_include_tag "bootstrap-dropdown.js", "data-turbolinks-track" => true %>
+	<!-- scrolspy library -->
+	<%= javascript_include_tag "bootstrap-scrollspy.js", "data-turbolinks-track" => true %>
+	<!-- library for creating tabs -->
+	<%= javascript_include_tag "bootstrap-tab.js", "data-turbolinks-track" => true %>
+	<!-- library for advanced tooltip -->
+	<%= javascript_include_tag "bootstrap-tooltip.js", "data-turbolinks-track" => true %>
+	<!-- popover effect library -->
+	<%= javascript_include_tag "bootstrap-popover.js", "data-turbolinks-track" => true %>
+	<!-- button enhancer library -->
+	<%= javascript_include_tag "bootstrap-button.js", "data-turbolinks-track" => true %>
+	<!-- accordion library (optional, not used in demo) -->
+	<%= javascript_include_tag "bootstrap-collapse.js", "data-turbolinks-track" => true %>
+	<!-- carousel slideshow library (optional, not used in demo) -->
+	<%= javascript_include_tag "bootstrap-carousel.js", "data-turbolinks-track" => true %>
+	<!-- autocomplete library -->
+	<%= javascript_include_tag "bootstrap-typeahead.js", "data-turbolinks-track" => true %>
+	<!-- tour library -->
+	<%= javascript_include_tag "bootstrap-tour.js", "data-turbolinks-track" => true %>
+	<!-- library for cookie management -->
+	<%= javascript_include_tag "jquery.cookie.js", "data-turbolinks-track" => true %>
+	<!-- calander plugin -->
+	<%= javascript_include_tag "fullcalendar.min.js", "data-turbolinks-track" => true %>
+	<!-- data table plugin -->
+	<%= javascript_include_tag "jquery.dataTables.min.js", "data-turbolinks-track" => true %>
+
+	<!-- chart libraries start -->
+	<%= javascript_include_tag "excanvas.js", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "jquery.flot.min.js", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "jquery.flot.pie.min.js", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "jquery.flot.stack.js", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "jquery.flot.resize.min.js", "data-turbolinks-track" => true %>
+	<!-- chart libraries end -->
+
+	<!-- select or dropdown enhancer -->
+	<%= javascript_include_tag "jquery.chosen.min.js", "data-turbolinks-track" => true %>
+	<!-- checkbox, radio, and file input styler -->
+	<%= javascript_include_tag "jquery.uniform.min.js", "data-turbolinks-track" => true %>
+	<!-- plugin for gallery image view -->
+	<%= javascript_include_tag "jquery.colorbox.min.js", "data-turbolinks-track" => true %>
+	<!-- rich text editor library -->
+	<%= javascript_include_tag "jquery.cleditor.min.js", "data-turbolinks-track" => true %>
+	<!-- notification plugin -->
+	<%= javascript_include_tag "jquery.noty.js", "data-turbolinks-track" => true %>
+	<!-- file manager library -->
+	<%= javascript_include_tag "jquery.elfinder.min.js", "data-turbolinks-track" => true %>
+	<!-- star rating plugin -->
+	<%= javascript_include_tag "jquery.raty.min.js", "data-turbolinks-track" => true %>
+	<!-- for iOS style toggle switch -->
+	<%= javascript_include_tag "jquery.iphone.toggle.js", "data-turbolinks-track" => true %>
+	<!-- autogrowing textarea plugin -->
+	<%= javascript_include_tag "jquery.autogrow-textarea.js", "data-turbolinks-track" => true %>
+	<!-- multiple file upload plugin -->
+	<%= javascript_include_tag "jquery.uploadify-3.1.min.js", "data-turbolinks-track" => true %>
+	<!-- history.js for cross-browser state change on ajax -->
+	<%= javascript_include_tag "jquery.history.js", "data-turbolinks-track" => true %>
+	<!-- application script for Charisma demo -->
+	<%= javascript_include_tag "charisma.js", "data-turbolinks-track" => true %>
+		
+	
+	<%= csrf_meta_tags %>
+</head>
+<body>
+
+	<%= render 'shared/topbar' %>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+
+
+			<%= render 'shared/left_menu'%>
+
+			<div id="content" class="span10">
+				<%= flush_the_flash %>
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<footer>
+		<p class="pull-left">&copy; <a href="http://twitter.com/pantulis" target="_blank">Juan Lupión</a> 2012</p>
+		<p class="pull-right">Powered by: <a href="http://usman.it/free-responsive-admin-template">Rails4 & Charisma</a></p>
+	</footer>
+		
+		
+	
+</body>
+</html>

@@ -1,0 +1,17 @@
+flash:
+   recipes:
+     create:
+         notice: "Receta creada."
+     update:
+         notice: "Receta actualizada."
+     destroy:
+         notice: "Receta borrada."
+         alert: "La receta no se ha podido borrar."
+   ingredients:
+     create:
+         notice: "Ingrediente creado."
+     update:
+         notice: "Ingrediente actualizado."
+     destroy:
+         notice: "Ingrediente borrado."
+         alert: "No se ha borrado el ingrediente."

@@ -1,0 +1,49 @@
+<div id="content" class="span10">
+
+	<div>
+		<ul class="breadcrumb">
+
+			<li>
+				<%= link_to 'Ingredientes', ingredients_url %><span class="divider">/</span>
+			</li>
+			<li>
+				Crear ingrediente
+			</li>
+		</ul>
+	</div>
+	
+				
+	<div class="row-fluid sortable">	
+		<div class="box span12">
+			
+			<div data-original-title="" class="box-header well">
+				<h2><i class="icon-edit"></i> Creando nuevo ingrediente</h2>
+			</div>
+			
+			<div class="box-content">
+			<%= form_for resource, :html => {:class => "form-horizontal"} do |f| %>
+			<fieldset>
+				<legend>Creando nuevo ingrediente</legend>
+				
+				<div class="control-group">
+					<label class="control-label" for="name">Nombre</label>
+					
+					<div class="controls">
+						<%= f.text_field :name, {:class => 'span6' } %>
+						<p class="help-block">Introducir el nombre del ingrediente (max 255 caracteres)</p>
+					</div>
+				</div>
+				
+				<div class="form-actions">
+					<%= f.submit "Crear", {:class => "btn btn-primary" } %>
+
+				</div>
+
+			</fieldset>
+			<% end %>
+			</div>
+		</div><!--/span-->
+	</div><!--/row-->
+
+<!-- content ends -->
+</div><!--/#content.span10-->

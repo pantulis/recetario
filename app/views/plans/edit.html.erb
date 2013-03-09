@@ -1,0 +1,14 @@
+
+<div>
+	<ul class="breadcrumb">
+		<li>
+			<%= link_to 'Calendarios', plans_url %><span class="divider">/</span>
+		</li>
+		<li>
+			Editar calendario
+		</li>
+	</ul>
+</div>
+
+
+<%= render 'calendar_form', :locals => {resource: @resource} %>

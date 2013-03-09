@@ -1,0 +1,27 @@
+<div>
+	<ul class="breadcrumb">
+		<li>
+			<%= link_to 'Calendarios', plans_url %><span class="divider">/</span>
+		</li>
+		<li>
+			<a href="#">Exportar calendario</a>
+		</li>
+	</ul>
+</div>
+	
+				
+<div class="row-fluid sortable">	
+	<div class="box span12">
+			
+		<div data-original-title="" class="box-header well">
+			<h2><i class="icon-calendar"></i> Exportación de calendario </h2>
+			<%= link_to('Omnifocus', 'x-omnifocus://parsetasks?text=' + URI.escape(@text.to_ascii), {class: "btn btn-success pull-right"}) %>
+		</div>
+			
+		
+		<div class="box-content">
+	    <pre><%= @text %></pre>
+		</div>
+	</div><!--/span-->
+</div><!--/row-->
+
