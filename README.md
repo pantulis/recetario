@@ -39,4 +39,5 @@ TODO
 * Añadir un sistema de autenticación de verdad
 * Hacerlo multiusuario
 * Enviar caracteres UTF-8 a la exportación de Omnifocus (parece un problema de Omnifocus URI Handler)
+* Escribir tests
 
