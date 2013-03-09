@@ -14,3 +14,9 @@ Antes que los tests, prefiero ver los pantallazos de las cosas que instalo, así
 
 ![Cuadro de mandos](https://github.com/pantulis/recetario/blob/master/doc/screenshots/panel_control.png?raw=true "¿Qué hay hoy para comer?")
 
+
+TODO
+----
+
+* Añadir autenticación básica
+* Añadir instrucciones para desplegar en Heroku
