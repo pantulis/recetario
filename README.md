@@ -8,6 +8,18 @@ Información técnica
 
 * Funciona con Ruby 2.0.x y Rails 4
 * Utiliza [Charisma, de Muhammad Usman](http://usman.it/themes/charisma/), que incluye el magnífico [FullCalendar de Ada Shaw](http://arshaw.com/fullcalendar/)
+* La funcionalidad de exportación de calendario genera un enlace que envía la lista de ingredientes a Omnifocus (con un handler x-omnifocus).
+* Se incluye un juego de recetas e ingredientes a modo de ejemplo.
+
+
+Instalación en Heroku
+---------------------
+
+Una vez instalada y subida la aplicación a Heroku, hay que activar las variables para la autenticación mínima:
+
+    heroku run rake db:setup  (o db:migrate si no queremos cargar los seeds)
+    heroku config:add HTTP_AUTH_NAME=XXX
+    heroku config:add HTTP_AUTH_PASSWORD=YYY
 
 Pantallazos
 -----------
@@ -24,5 +36,7 @@ Antes que los tests, prefiero ver los pantallazos de las cosas que instalo, así
 TODO
 ----
 
-* Añadir autenticación básica
-* Añadir instrucciones para desplegar en Heroku
+* Añadir un sistema de autenticación de verdad
+* Hacerlo multiusuario
+* Enviar caracteres UTF-8 a la exportación de Omnifocus (parece un problema de Omnifocus URI Handler)
+
