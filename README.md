@@ -3,6 +3,12 @@ Recetario
 
 Se trata de una aplicación sencilla para gestionar una base de datos de ingredientes y recetas, y la edición de calendarios para generar la lista de la compra.
 
+Información técnica
+-------------------
+
+* Funciona con Ruby 2.0.x y Rails 4
+* Utiliza [Charisma, de Muhammad Usman](http://usman.it/themes/charisma/), que incluye el magnífico [FullCalendar de Ada Shaw](http://arshaw.com/fullcalendar/)
+
 Pantallazos
 -----------
 
