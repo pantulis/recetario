@@ -5,7 +5,7 @@ class Plan < ActiveRecord::Base
 
 
   def self.meals_for_today
-    Meal.where("date = ?", Time.now.midnight)
+    Meal.where("date < ? and date > ?", Date.today, Date.today-1)
   end
 
   def self.new_from_calendar(params)
