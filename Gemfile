@@ -8,7 +8,6 @@ gem 'pg'
 gem 'acts_as_list'
 gem 'inherited_resources'
 gem 'stringex'
-gem 'sqlite3'
 
 # Gems used only for assets and not required
 # in production environments by default.
