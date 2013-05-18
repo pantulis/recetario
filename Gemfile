@@ -8,6 +8,14 @@ gem 'pg'
 gem 'acts_as_list'
 gem 'inherited_resources'
 gem 'stringex'
+gem 'figaro'
+gem 'httparty'
+
+
+group :development do
+  gem 'debugger'
+  gem 'bullet'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

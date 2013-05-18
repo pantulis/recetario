@@ -36,7 +36,7 @@ class PlansController < ApplicationController
   
   def export
     @resource = Plan.find(params[:id])
-    @text = @resource.export_omnifocus
+    @text = @resource.export_toodledo
   end
   
   private

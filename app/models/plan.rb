@@ -1,8 +1,11 @@
+# -*- coding: utf-8 -*-
+
 class Plan < ActiveRecord::Base
   belongs_to :user
   has_many :meals, :dependent => :destroy
   has_many :recipes, :through => :meals
-
+  has_many :ingredients, :through => :recipes
+  
 
   def self.meals_for_today
     Meal.where("date < ? and date > ?", Date.today, Date.today-1)
@@ -114,46 +117,33 @@ class Plan < ActiveRecord::Base
   end
 
   def export_toodledo
-    logger.debug("[Toodledo] Iniciando session")
-
-    if Settings.toodledo.export 
-      session = Toodledo::Session.new(Settings.toodledo.userid, Settings.toodledo.password)
-      session.connect()
-    end
-
-    logger.debug("[Toodledo] Creando carpeta recetas")
-  
-    recetas_folder_id = session.add_folder("recetas del #{Time.now.strftime('%d-%m')}").to_i if Settings.toodledo.export
-
+    token       = Toodledo::get_session_token()
+    key         = Toodledo::set_key(token)
+    folder_id   = nil
+    folder_name = I18n.l(start_date.to_date,:format => :short) + " al " +  I18n.l(end_date.to_date , :format => :short)
     ingredients = []
-    self.meals.each do |meal|
-      ingredients << meal.recipe.ingredients
+    tasks_to_export = []
+
+    folder_id = Toodledo::add_folder(key, folder_name)
+    
+    meals.each do |meal|
+      ingredients << meal.recipe.ingredients.all
     end
 
-    throttle = 0
-    ingredients.flatten.sort_by(&:position).group_by(&:id).each {|k,v|
-      sleep 1 if (throttle % 5 == 0)
-      recipes = self.recipes.select{|recipe| recipe.ingredients.include? v.first}
-      
-      title = if v.length == 1
-        "#{v.first.name}" 
-      else
-        "#{v.first.name} (*#{recipes.length})"
-      end
+    ingredients.flatten.group_by(&:id).each {|k,v|
+      my_recipes = self.recipes.all.select{|recipe| recipe.ingredients.include? v.first}
 
-      note = recipes.map(&:name).join(',')
-      logger.debug("[Toodledo] #{title} (#{note})")        
-      
-      session.add_task(title , 
-        :folder => recetas_folder_id,
-        :note => note)   if Settings.toodledo.export
-        
-      throttle += 1
+      title = (v.length == 1 ? "#{v.first.name}" : "#{v.first.name} (*#{my_recipes.length})")
+
+      note = my_recipes.map(&:name).join(',')
+      tasks_to_export << {:title => title, :folder => folder_id, :note => note} 
     }
-    logger.debug("[Toodledo] Cerrando sesion")
-    session.disconnect() if Settings.toodledo.export
-  end
 
+    Toodledo::add_tasks(key, tasks_to_export)
+    tasks_to_export
+  end
+  
+  
 end
 
 

@@ -24,4 +24,13 @@ RecetarioRails4::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
+
+
+  config.after_initialize do
+    Bullet.enable = true
+    #Bullet.alert = true
+    Bullet.bullet_logger = true
+    #Bullet.rails_logger = true
+    #Bullet.airbrake = true
+  end
 end
