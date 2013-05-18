@@ -35,7 +35,7 @@ class Toodledo
   end
 
   def self.add_folder(key, name)
-    response = HTTParty.get('http://api.toodledo.com/2/folders/add.php', query: { name: name + '_#{Time.now.to_i % 10}', key: key})
+    response = HTTParty.get('http://api.toodledo.com/2/folders/add.php', query: { name: name + "_#{Time.now.to_i % 10}", key: key})
     Rails.logger.debug("[toodledo::add_folder]" + response.body)
     
     folder_id = JSON.parse(response.body).first["id"]
