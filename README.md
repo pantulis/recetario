@@ -6,7 +6,7 @@ Se trata de una aplicación sencilla para gestionar una base de datos de ingredi
 Información técnica
 -------------------
 
-* Funciona con Ruby 2.0.x y Rails 4
+* Funciona con Ruby 2.2 y Rails 4.2
 * Utiliza [Charisma, de Muhammad Usman](http://usman.it/themes/charisma/), que incluye el magnífico [FullCalendar de Ada Shaw](http://arshaw.com/fullcalendar/)
 * La funcionalidad de exportación de calendario genera un enlace que envía la lista de ingredientes a Omnifocus (con un handler x-omnifocus).
 * Se incluye un juego de recetas e ingredientes a modo de ejemplo.
