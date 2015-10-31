@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0' # para Heroku
+ruby '2.2.1' # para Heroku
 
-gem 'rails', '4.0.0.beta1'
+gem 'rails', '4.2.4'
 
 gem 'pg'
 gem 'acts_as_list'
@@ -10,18 +10,17 @@ gem 'inherited_resources'
 gem 'stringex'
 gem 'figaro'
 gem 'httparty'
-
+gem 'multi_json'
 
 group :development do
-  gem 'debugger'
   gem 'bullet'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'sass-rails' 
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
