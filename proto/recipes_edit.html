@@ -17,7 +17,9 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+	<link href="assets/css/chosen.min.css" rel="stylesheet">
+	<link href="assets/css/jquery.tagsinput.css" rel="stylesheet">
+	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -110,10 +112,54 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i>TÍTULO DE PAGINA</h3>
+          	<h3><i class="fa fa-angle-right"></i>NUEVA RECETA</h3>
           	<div class="row mt">
           		<div class="col-lg-12">
-          		<p>Poner aquí el contenido.</p>
+					<div class="form-panel">
+						<h4>Crear nueva receta</h4>
+						<form class="form-horizontal style-form">
+						  <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control">
+                                  <span class="help-block">Nombre del ingrediente (máx. 255 caracteres).</span>
+							  </div>
+						  </div><!-- .form-group -->
+						  
+						  <div class="form-group">
+							  <label class="col-sm-2 col-sm-2 control-label">Preparación</label>
+							  <div class="col-sm-10">
+								  <textarea class="form-control" rows=10 id="editor" contenteditable="true">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+								  </textarea>
+                              </div>
+                          </div>
+
+						  <div class="form-group">
+							  <label class="col-sm-2 col-sm-2 control-label">Ingredientes</label>
+							  <div class="col-sm-10">
+								  <select multiple class="form-control chosen">
+								  						  <option selected>patatas</option>
+								  						  <option selected>huevos</option>
+								  						  <option>pimiento</option>
+								  						  <option>ajonjolí</option>
+								  						  <option>arsénico</option>
+								  </select>
+							  </div>
+						  </div><!-- .form-group -->
+
+						  <div class="form-group">
+							  <label class="col-sm-2 col-sm-2 control-label">Etiquetas</label>
+							  <div class="col-sm-10">
+						  	     <input type="text" class="form-control" name="tags" id="recipe-tags" value="foo,bar,baz" />
+						      </div>
+						  </div><!-- .form-group -->
+						
+						  <button type="submit" class="btn btn-theme">Crear</button>
+							  
+						</form>
+					</div>
+
           		</div>
           	</div>
 			
@@ -146,13 +192,20 @@
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
 
-    <!--script for this page-->
+    <script src="assets/js/chosen.jquery.js"></script>
+	<script src="assets/js/jquery.tagsinput.js"></script>
     
   <script>
       //custom select box
-
       $(function(){
-          $('select.styled').customSelect();
+		  $("select.chosen").chosen();
+		  $("#recipe-tags").tagsInput({
+			  'interactive': true,
+			  'minChars': 3,
+			  'maxChars': 50
+		  }
+			  
+		  );
       });
 
   </script>

@@ -1648,7 +1648,7 @@ PANELS CONFIGURATIONS
 /* Calendar Events - Calendar.html*/
 .external-event {
 	cursor: move;
-	display: inline-block !important;
+	display: inline-block;
 	margin-bottom: 7px !important;
 	margin-right: 7px !important;
 	padding: 10px;
