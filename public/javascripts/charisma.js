@@ -103,7 +103,11 @@ function docReady(){
 	
 	//rich text editor
 	//$('.cleditor').cleditor();
-	$('.cleditor').cleditor({width:"100%", height:"100%"});
+	$('.cleditor').cleditor({
+            width:"100%", 
+            height:"100%", 
+            controls: "bold italic | bullets numbering | removeformat" });
+
 	//datepicker
 	$('.datepicker').datepicker();
 	
