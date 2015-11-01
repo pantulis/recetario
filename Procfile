@@ -1,2 +1,2 @@
-web: bin/rails server -p $PORT
+web: bundle exec puma -t 5:5 -p 3000 -e production
 console: bin/rails console
