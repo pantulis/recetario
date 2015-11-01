@@ -116,6 +116,39 @@ class Plan < ActiveRecord::Base
     res
   end
 
+  def export_wunderlist
+
+      wl = Wunderlist::API.new({:access_token => ENV['wunderlist_access_token'], 
+                                :client_id =>  ENV['wunderlist_client_id'] })
+
+      tasks_to_export = []                          
+      ingredients = []
+      folder_id = ""
+      
+      meals.each do |meal|
+        ingredients << meal.recipe.ingredients.all
+     end
+      
+      ingredients.flatten.group_by(&:id).each {|k,v|
+        my_recipes = self.recipes.all.select{|recipe| recipe.ingredients.include? v.first}
+        
+        title = (v.length == 1 ? "#{v.first.name}" : "#{v.first.name} (*#{my_recipes.length})")
+        
+        note = my_recipes.map(&:name).join(',')
+        tasks_to_export << {:title => title, :folder => folder_id, :note => note} 
+      }
+      
+      
+      tasks_to_export.each do |t|
+        task = wl.new_task(ENV['wunderlist_tasks_folder'], {:title => t[:title]})
+        task.save
+        note = task.note
+        
+        note.content = t[:note]
+        note.save
+      end
+  end
+
   def export_toodledo
     token       = Toodledo::get_session_token()
     key         = Toodledo::set_key(token)
