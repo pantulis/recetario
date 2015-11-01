@@ -15,6 +15,10 @@ gem 'json'
 #gem 'activesupport-json_encoder'
 gem 'wunderlist-api'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'bullet'
 end
