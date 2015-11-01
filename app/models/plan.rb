@@ -118,8 +118,8 @@ class Plan < ActiveRecord::Base
 
   def export_wunderlist
 
-      wl = Wunderlist::API.new({:access_token => ENV['wunderlist_access_token'], 
-                                :client_id =>  ENV['wunderlist_client_id'] })
+      wl = Wunderlist::API.new({:access_token => ENV['WUNDERLIST_ACCESS_TOKEN'], 
+                                :client_id =>  ENV['WUNDERLIST_CLIENT_ID'] })
 
       tasks_to_export = []                          
       ingredients = []
@@ -140,7 +140,7 @@ class Plan < ActiveRecord::Base
       
       
       tasks_to_export.each do |t|
-        task = wl.new_task(ENV['wunderlist_tasks_folder'], {:title => t[:title]})
+        task = wl.new_task(ENV['WUNDERLIST_TASKS_FOLDER'], {:title => t[:title]})
         task.save
         note = task.note
         
