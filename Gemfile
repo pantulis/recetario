@@ -10,7 +10,10 @@ gem 'inherited_resources'
 gem 'stringex'
 gem 'figaro'
 gem 'httparty'
-gem 'multi_json'
+gem 'json'
+#gem 'multi_json'
+#gem 'activesupport-json_encoder'
+gem 'wunderlist-api'
 
 group :development do
   gem 'bullet'
@@ -34,6 +37,6 @@ gem 'jquery-rails'
 # gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.0.1'
+# gem 'jbuilder', '~> 1.0.1'
 
 
