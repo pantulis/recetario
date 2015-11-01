@@ -34,9 +34,14 @@ class PlansController < ApplicationController
     redirect_to action: :index
   end
   
-  def export
+  def toodledo
     @resource = Plan.find(params[:id])
     @text = @resource.export_toodledo
+  end
+
+  def wunderlist
+    @resource = Plan.find(params[:id])
+    @text = @resource.export_wunderlist
   end
   
   private

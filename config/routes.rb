@@ -6,7 +6,8 @@ RecetarioRails4::Application.routes.draw do
   resources :recipes
   resources :plans do 
     member do 
-      get 'export'
+      get 'toodledo'
+      get 'wunderlist'
     end
   end
   
