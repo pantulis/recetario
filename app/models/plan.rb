@@ -5,16 +5,16 @@ class Plan < ActiveRecord::Base
   has_many :meals, :dependent => :destroy
   has_many :recipes, :through => :meals
   has_many :ingredients, :through => :recipes
-  
 
-  def self.meals_for_today
+
+ def self.meals_for_today
     Meal.where("date < ? and date > ?", Date.today, Date.today-1)
   end
 
   def self.new_from_calendar(params)
     recipes = params[:recipes]
     dates = params[:dates]
-    
+
     plan = Plan.new
 
     recipes.each_with_index do |recipe,idx| 
@@ -23,20 +23,20 @@ class Plan < ActiveRecord::Base
       m.recipe = r
       m.date = DateTime.parse(dates[idx])
       m.save
-      
+
       plan.meals << m
     end
     plan.save
-    
+
   end
-  
+
   def update_from_calendar(params)
     recipes = params[:recipes]
     dates = params[:dates]
-    
+
     meals.destroy_all
-    
-    recipes.each_with_index do |recipe,idx| 
+
+    recipes.each_with_index do |recipe,idx|
       r = Recipe.find(recipe)
       m = Meal.new
       m.recipe = r
@@ -121,6 +121,7 @@ class Plan < ActiveRecord::Base
       wl = Wunderlist::API.new({:access_token => ENV['WUNDERLIST_ACCESS_TOKEN'], 
                                 :client_id =>  ENV['WUNDERLIST_CLIENT_ID'] })
 
+      
       tasks_to_export = []                          
       ingredients = []
       folder_id = ""
@@ -138,15 +139,17 @@ class Plan < ActiveRecord::Base
         tasks_to_export << {:title => title, :folder => folder_id, :note => note} 
       }
       
+      Resque.enqueue(WunderlistExporter, id)
       
       tasks_to_export.each do |t|
-        task = wl.new_task(ENV['WUNDERLIST_TASKS_FOLDER'], {:title => t[:title]})
-        task.save
-        note = task.note
+        #task = wl.new_task(ENV['WUNDERLIST_TASKS_FOLDER'], {:title => t[:title]})
+        #task.save
+        #note = task.note
         
-        note.content = t[:note]
-        note.save
+        #note.content = t[:note]
+        #note.save
       end
+      
   end
 
   def export_toodledo

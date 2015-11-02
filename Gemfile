@@ -14,6 +14,7 @@ gem 'json'
 #gem 'multi_json'
 #gem 'activesupport-json_encoder'
 gem 'wunderlist-api'
+gem "resque"
 
 group :production do
   gem 'rails_12factor'
