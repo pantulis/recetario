@@ -1,4 +1,4 @@
-if defined?(ActiveSupport::JSON)
+if false && defined?(ActiveSupport::JSON)
   [Object, Array, FalseClass, Float, Hash, Integer, NilClass, String, TrueClass].each do |klass|
     klass.class_eval do
       def to_json(*args)
