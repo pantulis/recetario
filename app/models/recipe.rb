@@ -1,8 +1,9 @@
+# coding: utf-8
 
 class Recipe < ActiveRecord::Base
 
   belongs_to :user
-  default_scope  { order("name ASC") }
+  default_scope { order('name ASC') }
   has_and_belongs_to_many :ingredients
 
   attr_accessor :ingredients_tokens

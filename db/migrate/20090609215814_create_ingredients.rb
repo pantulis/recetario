@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class CreateIngredients < ActiveRecord::Migration
   def self.up
     create_table :ingredients do |t|

@@ -1,8 +1,9 @@
-class IngredientsController < InheritedResources::Base
+# coding: utf-8
 
+class IngredientsController < InheritedResources::Base
   def create
     super do |format|
-      format.html { redirect_to ingredients_url}
+      format.html { redirect_to ingredients_url }
     end
   end
 
@@ -17,9 +18,9 @@ class IngredientsController < InheritedResources::Base
   def collection
     end_of_association_chain.includes(:recipes)
   end
-  
+
   def resource_params
-      return [] if request.get?
-      [ params.require(:ingredient).permit(:name) ]
+    return [] if request.get?
+    [params.require(:ingredient).permit(:name)]
   end
 end

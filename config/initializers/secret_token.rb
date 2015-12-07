@@ -1,3 +1,4 @@
+# coding: utf-8
 # Be sure to restart your server when you modify this file.
 
 # Your secret key for verifying the integrity of signed cookies.
@@ -9,4 +10,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-RecetarioRails4::Application.config.secret_key_base = '79915c06c992ef4c129f67b2f7b6d83f8d9e59febba8a8588482ed66e3a34bb3814d8a4977f94dc93bb21586ab9eab8d6d1fefe46e3eb1c29a4c55f050bb6425'
+RecetarioRails4::Application.config.secret_key_base =
+  '79915c06c992ef4c129f67b2f7b6d83f8d9e59febba8a8588482ed66e3a34bb3814d8a4977f94dc93bb21586ab9eab8d6d1fefe46e3eb1c29a4c55f050bb6425'
