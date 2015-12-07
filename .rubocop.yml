@@ -1,0 +1,19 @@
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 99
+  
+Style/Encoding:
+  Enabled: true
+  
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+  
+AllCops:
+  RunRailsCops: true
+  ExtraDetails: true
