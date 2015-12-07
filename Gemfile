@@ -1,6 +1,9 @@
+# encoding: utf-8
+
 source 'https://rubygems.org'
 
-ruby '2.2.1' # para Heroku
+# para Heroku
+ruby '2.2.1' 
 
 gem 'rails', '4.2.4'
 
@@ -11,10 +14,10 @@ gem 'stringex'
 gem 'figaro'
 gem 'httparty'
 gem 'json'
-#gem 'multi_json'
-#gem 'activesupport-json_encoder'
+# gem 'multi_json'
+# gem 'activesupport-json_encoder'
 gem 'wunderlist-api'
-gem "resque"
+gem 'resque'
 
 group :production do
   gem 'rails_12factor'
@@ -23,12 +26,13 @@ end
 
 group :development do
   gem 'bullet'
+  gem 'rubocop', require: false
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails' 
+  gem 'sass-rails'
   gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -44,5 +48,3 @@ gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 1.0.1'
-
-
