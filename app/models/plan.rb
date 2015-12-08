@@ -46,7 +46,7 @@ class Plan < ActiveRecord::Base
   end
 
   def events_for_calendar
-    meals.map do |meal|
+    meals.includes(:recipe).map do |meal|
       { title: meal.recipe.name, start: meal.date, recipe_id: meal.recipe.id }
     end.to_json.html_safe
   end
