@@ -13,10 +13,11 @@ gem 'inherited_resources'
 gem 'stringex'
 gem 'figaro'
 gem 'httparty'
-gem 'json'
+# gem 'json'
 # gem 'multi_json'
 # gem 'activesupport-json_encoder'
-gem 'wunderlist-api'
+gem 'wunderlist-api', github:  'pantulis/wunderlist-api'
+
 gem 'resque'
 
 group :production do
@@ -25,6 +26,7 @@ group :production do
 end
 
 group :development do
+  gem 'byebug'
   gem 'bullet'
   gem 'rubocop', require: false
 end
