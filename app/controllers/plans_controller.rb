@@ -5,7 +5,7 @@
 
 class PlansController < ApplicationController
   def index
-    @collection = Plan.all
+    @collection = Plan.all.includes(:meals)
   end
 
   def new

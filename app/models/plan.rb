@@ -92,12 +92,12 @@ class Plan < ActiveRecord::Base
     ingredients = []
     folder_id = ''
 
-    meals.each do |meal|
+    meals.includes(:recipe).each do |meal|
       ingredients << meal.recipe.ingredients.all
     end
     
     ingredients.flatten.group_by(&:id).each do |_k, v|
-      my_recipes = recipes.all.select { |recipe| recipe.ingredients.include? v.first }
+      my_recipes = recipes.all.includes(:ingredients).select { |recipe| recipe.ingredients.include? v.first }
 
       title = (v.length == 1 ? "#{v.first.name}" : "#{v.first.name} (*#{my_recipes.length})")
       note = my_recipes.map(&:name).join(',')
