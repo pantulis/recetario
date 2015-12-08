@@ -102,15 +102,22 @@ class Plan < ActiveRecord::Base
       tasks_to_export << { title: title, folder: folder_id, note: note }
     end
 
+    logger.info("Enqueing job")
     Resque.enqueue(WunderlistExporter, id)
 
-    tasks_to_export.each do |t|
-      # task = wl.new_task(ENV['WUNDERLIST_TASKS_FOLDER'], {:title => t[:title]})
-      # task.save
-      # note = task.note
-      # note.content = t[:note]
-      # note.save
-    end
+    # wl = Wunderlist::API.new(
+    #   access_token: ENV['WUNDERLIST_ACCESS_TOKEN'],
+    #   client_id: ENV['WUNDERLIST_CLIENT_ID'])
+    #
+    # tasks_to_export.each do |t|
+    #   logger.debug("[wunderlist-api] save_task #{t[:title]}")
+    #   task = wl.new_task(ENV['WUNDERLIST_TASKS_FOLDER'], {:title => t[:title]})
+    #   task.save
+    #   logger.debug("[wunderlist-api] save_note #{t[:note]}")
+    #   note = task.note
+    #   note.content = t[:note]
+    #   note.save
+    # end
   end
 
   def export_toodledo
@@ -130,6 +137,7 @@ class Plan < ActiveRecord::Base
     meals.each do |meal|
       ingredients << meal.recipe.ingredients.all
     end
+
 
     ingredients.flatten.group_by(&:id).each do |_k, v|
       my_recipes = recipes.all.select { |recipe| recipe.ingredients.include? v.first }

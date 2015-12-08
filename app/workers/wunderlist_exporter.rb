@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 # This class exports a given recipe and ingredient lisk to Wunderlist
+
 class WunderlistExporter
   @queue = :exporters_queue
-
-  def self.initialize
-    @wl = Wunderlist::API.new(
-      access_token: ENV['WUNDERLIST_ACCESS_TOKEN'],
-      client_id:  ENV['WUNDERLIST_CLIENT_ID'])
-  end
 
   def self.perform(plan_id)
     plan = Plan.find(plan_id)
@@ -36,8 +31,13 @@ class WunderlistExporter
                            note: note }
     end
 
+    wl = Wunderlist::API.new(
+      access_token: ENV['WUNDERLIST_ACCESS_TOKEN'],
+      client_id: ENV['WUNDERLIST_CLIENT_ID'])
+
     tasks_to_export.each do |t|
-      task = @wl.new_task(ENV['WUNDERLIST_TASKS_FOLDER'], title: t[:title])
+      Rails.logger.debug ("[Wunderlist Exporter] => : #{t[:title]} (#{t[:note]})")
+      task = wl.new_task(ENV['WUNDERLIST_TASKS_FOLDER'], title: t[:title])
       task.save
       note = task.note
       note.content = t[:note]
