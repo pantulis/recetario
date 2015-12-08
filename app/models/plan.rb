@@ -105,8 +105,10 @@ class Plan < ActiveRecord::Base
     end
 
 
-    logger.info("Enqueing job")
-    Resque.enqueue(WunderlistExporter, id)
+    if ENV['WUNDERLIST_PERFORM_EXPORT']
+      logger.info("Enqueing job")
+      Resque.enqueue(WunderlistExporter, id)
+    end
 
     tasks_to_export 
     
