@@ -86,6 +86,8 @@ class Plan < ActiveRecord::Base
   end
 
   def export_wunderlist
+
+
     tasks_to_export = []
     ingredients = []
     folder_id = ''
@@ -102,9 +104,12 @@ class Plan < ActiveRecord::Base
       tasks_to_export << { title: title, folder: folder_id, note: note }
     end
 
+
     logger.info("Enqueing job")
     Resque.enqueue(WunderlistExporter, id)
 
+    tasks_to_export 
+    
     # wl = Wunderlist::API.new(
     #   access_token: ENV['WUNDERLIST_ACCESS_TOKEN'],
     #   client_id: ENV['WUNDERLIST_CLIENT_ID'])
