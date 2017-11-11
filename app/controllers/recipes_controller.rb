@@ -19,6 +19,6 @@ class RecipesController < InheritedResources::Base
 
   def resource_params
     return [] if request.get?
-    [params.require(:recipe).permit(:name, :odescription, ingredient_ids: [])]
+    [params.require(:recipe).permit(:name, :description, ingredient_ids: [])]
   end
 end
